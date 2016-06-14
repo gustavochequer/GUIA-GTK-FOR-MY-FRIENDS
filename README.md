@@ -1,8 +1,19 @@
-# GUIA-GTK-FOR-MY-FRIENDS
+/* GUIA-GTK-FOR-MY-FRIENDS
 
 ***** 1° 
         Copie o código abaixo !!!!!!!!
-        
+	
+	2° Cole ACIMA do seu main
+	
+	4° Inclua a biblioteca gtk/gtk.h/
+	#include <gtk/gtk.h>
+
+	3° Use as funcoes 
+  
+ */  
+ 
+ 
+ 
 typedef struct _gtk_config {
 	
 	GtkBuilder *builder;
@@ -46,7 +57,34 @@ static void gtk_start_application(int argc, char **argv) {
 	
 	//Showing widgets;			
 	gtk_widget_show((GtkWidget*)gtk.mainWindow);	
+}
 
-	//Initiate signal handler;
-	gtk_signal_handler_init();	
+//Use a função para puxar o valor dos campos de entrada
+//Basta chamar a função, passar o campo de entrada aonde está o valor que vcs querem
+// Esta função retorna um double;
+
+//Exemplo :
+	//GtkEntry *sua_entrada = .... ( sua entrada vc quem puxa )
+//	double numero = gtk_get_entry_value(sua_entrada); 	
+
+double gtk_get_entry_value (GtkEntry* entry) {
+	
+	double value = atof(gtk_entry_get_text(entry)); 
+
+	return value;
+}
+
+//Use essa funcao para escrever no label que vc quer imprimir o resultado
+
+//Exemplo
+//	gtk_escreve_no_label(
+
+void gtk_escreve_no_label(double numero, GtkLabel* label) {
+
+	char resultado[10];
+	
+	sprintf(resultado, %f, numero);
+	
+	gtk_label_set_text(label, resultado);
+
 }
